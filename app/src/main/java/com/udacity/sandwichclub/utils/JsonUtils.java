@@ -33,9 +33,9 @@ public class JsonUtils {
                 anList.add(alsoKnownAs.getString(i));
             }
 
-            String placeOfOrigin = name.getString("placeOfOrigin");
-            String description = name.getString("description");
-            String image = name.getString("image");
+            String placeOfOrigin = root.getString("placeOfOrigin");
+            String description = root.getString("description");
+            String image = root.getString("image");
 
             JSONArray ingredients = root.getJSONArray("ingredients");
             ArrayList<String> inList = new ArrayList<>();
