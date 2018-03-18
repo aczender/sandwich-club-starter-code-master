@@ -3,6 +3,7 @@ package com.udacity.sandwichclub.utils;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.udacity.sandwichclub.model.Sandwich;
 
 import org.json.JSONArray;
@@ -15,8 +16,10 @@ public class JsonUtils {
 
 
     //Array is needed for ingredients and Alsoknownas
-    public static Sandwich parseSandwichJson(String json) throws JSONException {
-        if(TextUtils.isEmpty(json)) {
+    public static Sandwich parseSandwichJson(String json) {
+
+
+        if (TextUtils.isEmpty(json)) {
             return null;
         }
 
