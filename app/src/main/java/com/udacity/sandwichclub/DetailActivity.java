@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +13,9 @@ import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
 import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DetailActivity extends AppCompatActivity {
@@ -49,7 +53,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
@@ -64,19 +68,21 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
 
         TextView originTv = findViewById(R.id.origin_tv);
-        TextView descriptionTv = findViewById(R.id.description_tv);
         TextView alsoKnownAsTv = findViewById(R.id.also_known_tv);
         TextView ingredientsTv = findViewById(R.id.ingredients_tv);
+        TextView descriptionTv = findViewById(R.id.description_tv);
+
 
         Intent intent = getIntent();
         if (intent == null) {
             closeOnError();
         }
 
+
         originTv.setText(sandwich.getPlaceOfOrigin());
+        alsoKnownAsTv.setText(android.text.TextUtils.join(", ",sandwich.getAlsoKnownAs()));
+        ingredientsTv.setText(android.text.TextUtils.join(", ",sandwich.getIngredients()));
         descriptionTv.setText(sandwich.getDescription());
-        alsoKnownAsTv.setText(alsoKnownAsTv.toString());
-        ingredientsTv.setText(ingredientsTv.toString());
 
 
     }
