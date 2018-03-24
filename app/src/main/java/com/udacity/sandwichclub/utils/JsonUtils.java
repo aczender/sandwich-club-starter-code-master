@@ -18,11 +18,6 @@ public class JsonUtils {
     //Array is needed for ingredients and Alsoknownas
     public static Sandwich parseSandwichJson(String json) {
 
-
-        if (TextUtils.isEmpty(json)) {
-            return null;
-        }
-
         try {
 
             JSONObject root = new JSONObject(json);
@@ -42,7 +37,7 @@ public class JsonUtils {
 
             JSONArray ingredients = root.getJSONArray("ingredients");
             ArrayList<String> inList = new ArrayList<>();
-            for (int i = 0; i < alsoKnownAs.length(); i++) {
+            for (int i = 0; i < ingredients.length(); i++) {
                 inList.add(ingredients.getString(i));
             }
 
